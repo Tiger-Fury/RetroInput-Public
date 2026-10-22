@@ -26,6 +26,10 @@ For games without a console counterpart, a comparable layout will be provided ba
 
 PC keyboard and mouse bindings remain at their default settings.
 
+## Public releases
+
+This repository contains the public releases of RetroInput. Work on the development branch continues privately. Changes will be added to this public repository once a new stable game release has been confirmed.
+
 ## Credits
 
 - **[ThirteenAG](https://github.com/ThirteenAG)** — thank you for creating **[Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader)**, used for automatic DLL loading.
