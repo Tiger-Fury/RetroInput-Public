@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\StickWalk.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\TapHold.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSufferingTTB\InputMapping.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSufferingTTB\RenderingSupport.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSufferingTTB\ButtonRenderer.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSufferingTTB\PromptText.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSufferingTTB\Prompts.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="DualShock4.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Shield.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Backbone.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Vx2.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="JoyCon.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\DualShock4Report.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\ShieldReport.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\BackboneReport.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\Vx2Report.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\JoyConReport.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\ControllerTypes.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\ControllerActivity.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="ControllerSelector.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSuffering\InputMapping.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\ButtonImages.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\XInputAggregator.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\XboxSeriesImageMap.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\NintendoImageMap.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\DualShock4ImageMap.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\ButtonImageData.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Games\TheSuffering\ButtonRenderer.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DualSense.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Games\TheSufferingTTB\GameHooks.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="DualShock4.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="Shield.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="Backbone.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="Vx2.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="JoyCon.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="Core\ButtonImages.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\TheSuffering\GameHooks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\TheSuffering\Prompts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DualSense.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ButtonImages.rc"><Filter>Resource Files</Filter></ResourceCompile>
+    <None Include="..\assets\buttons\dualsense\atlas.png"><Filter>Resource Files</Filter></None>
+    <None Include="..\assets\buttons\xbox-series\atlas.png"><Filter>Resource Files</Filter></None>
+    <None Include="..\assets\buttons\nintendo\atlas.png"><Filter>Resource Files</Filter></None>
+    <None Include="..\assets\buttons\dualshock4\atlas.png"><Filter>Resource Files</Filter></None>
+    <None Include="..\assets\buttons\controller-buttons.png"><Filter>Resource Files</Filter></None>
+    <None Include="..\tools\PackButtonImages.ps1" />
+  </ItemGroup>
+</Project>
+

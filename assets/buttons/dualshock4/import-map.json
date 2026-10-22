@@ -1,0 +1,582 @@
+[
+  {
+    "button": "South",
+    "source_rect": [
+      260,
+      0,
+      358,
+      98
+    ],
+    "tile": 0
+  },
+  {
+    "button": "East",
+    "source_rect": [
+      130,
+      0,
+      228,
+      98
+    ],
+    "tile": 1
+  },
+  {
+    "button": "West",
+    "source_rect": [
+      390,
+      0,
+      488,
+      98
+    ],
+    "tile": 2
+  },
+  {
+    "button": "North",
+    "source_rect": [
+      0,
+      0,
+      98,
+      98
+    ],
+    "tile": 3
+  },
+  {
+    "button": "LeftShoulder",
+    "source_rect": [
+      0,
+      260,
+      98,
+      358
+    ],
+    "tile": 4
+  },
+  {
+    "button": "RightShoulder",
+    "source_rect": [
+      130,
+      260,
+      228,
+      358
+    ],
+    "tile": 5
+  },
+  {
+    "button": "LeftTrigger",
+    "source_rect": [
+      260,
+      260,
+      358,
+      358
+    ],
+    "tile": 6
+  },
+  {
+    "button": "RightTrigger",
+    "source_rect": [
+      390,
+      260,
+      488,
+      358
+    ],
+    "tile": 7
+  },
+  {
+    "button": "DpadUp",
+    "source_rect": [
+      0,
+      1430,
+      98,
+      1528
+    ],
+    "tile": 8
+  },
+  {
+    "button": "DpadDown",
+    "source_rect": [
+      130,
+      1430,
+      228,
+      1528
+    ],
+    "tile": 9
+  },
+  {
+    "button": "DpadLeft",
+    "source_rect": [
+      260,
+      1430,
+      358,
+      1528
+    ],
+    "tile": 10
+  },
+  {
+    "button": "DpadRight",
+    "source_rect": [
+      390,
+      1430,
+      488,
+      1528
+    ],
+    "tile": 11
+  },
+  {
+    "button": "DpadLeftRight",
+    "source_rect": [
+      260,
+      1560,
+      358,
+      1658
+    ],
+    "tile": 12
+  },
+  {
+    "button": "Menu",
+    "source_rect": [
+      0,
+      1950,
+      98,
+      2048
+    ],
+    "tile": 13
+  },
+  {
+    "button": "View",
+    "source_rect": [
+      130,
+      1950,
+      228,
+      2048
+    ],
+    "tile": 14
+  },
+  {
+    "button": "LeftStick",
+    "source_rect": [
+      0,
+      910,
+      98,
+      1008
+    ],
+    "tile": 15
+  },
+  {
+    "button": "RightStick",
+    "source_rect": [
+      0,
+      1170,
+      98,
+      1268
+    ],
+    "tile": 16
+  },
+  {
+    "button": "DpadUpDown",
+    "source_rect": [
+      130,
+      1560,
+      228,
+      1658
+    ],
+    "tile": 17
+  },
+  {
+    "button": "LeftStickClick",
+    "source_rect": [
+      0,
+      390,
+      98,
+      488
+    ],
+    "tile": 18
+  },
+  {
+    "button": "LeftStickClickAllDirections",
+    "source_rect": [
+      130,
+      390,
+      228,
+      488
+    ],
+    "tile": 19
+  },
+  {
+    "button": "LeftStickClickLeftRight",
+    "source_rect": [
+      260,
+      390,
+      358,
+      488
+    ],
+    "tile": 20
+  },
+  {
+    "button": "LeftStickClickUpDown",
+    "source_rect": [
+      390,
+      390,
+      488,
+      488
+    ],
+    "tile": 21
+  },
+  {
+    "button": "LeftStickClickUp",
+    "source_rect": [
+      0,
+      520,
+      98,
+      618
+    ],
+    "tile": 22
+  },
+  {
+    "button": "LeftStickClickDown",
+    "source_rect": [
+      130,
+      520,
+      228,
+      618
+    ],
+    "tile": 23
+  },
+  {
+    "button": "LeftStickClickLeft",
+    "source_rect": [
+      260,
+      520,
+      358,
+      618
+    ],
+    "tile": 24
+  },
+  {
+    "button": "LeftStickClickRight",
+    "source_rect": [
+      390,
+      520,
+      488,
+      618
+    ],
+    "tile": 25
+  },
+  {
+    "button": "RightStickClick",
+    "source_rect": [
+      0,
+      650,
+      98,
+      748
+    ],
+    "tile": 26
+  },
+  {
+    "button": "RightStickClickAllDirections",
+    "source_rect": [
+      130,
+      650,
+      228,
+      748
+    ],
+    "tile": 27
+  },
+  {
+    "button": "RightStickClickLeftRight",
+    "source_rect": [
+      260,
+      650,
+      358,
+      748
+    ],
+    "tile": 28
+  },
+  {
+    "button": "RightStickClickUpDown",
+    "source_rect": [
+      390,
+      650,
+      488,
+      748
+    ],
+    "tile": 29
+  },
+  {
+    "button": "RightStickClickUp",
+    "source_rect": [
+      0,
+      780,
+      98,
+      878
+    ],
+    "tile": 30
+  },
+  {
+    "button": "RightStickClickDown",
+    "source_rect": [
+      130,
+      780,
+      228,
+      878
+    ],
+    "tile": 31
+  },
+  {
+    "button": "RightStickClickLeft",
+    "source_rect": [
+      260,
+      780,
+      358,
+      878
+    ],
+    "tile": 32
+  },
+  {
+    "button": "RightStickClickRight",
+    "source_rect": [
+      390,
+      780,
+      488,
+      878
+    ],
+    "tile": 33
+  },
+  {
+    "button": "LeftStickAllDirections",
+    "source_rect": [
+      130,
+      910,
+      228,
+      1008
+    ],
+    "tile": 34
+  },
+  {
+    "button": "LeftStickLeftRight",
+    "source_rect": [
+      260,
+      910,
+      358,
+      1008
+    ],
+    "tile": 35
+  },
+  {
+    "button": "LeftStickUpDown",
+    "source_rect": [
+      390,
+      910,
+      488,
+      1008
+    ],
+    "tile": 36
+  },
+  {
+    "button": "LeftStickUp",
+    "source_rect": [
+      0,
+      1040,
+      98,
+      1138
+    ],
+    "tile": 37
+  },
+  {
+    "button": "LeftStickDown",
+    "source_rect": [
+      130,
+      1040,
+      228,
+      1138
+    ],
+    "tile": 38
+  },
+  {
+    "button": "LeftStickLeft",
+    "source_rect": [
+      260,
+      1040,
+      358,
+      1138
+    ],
+    "tile": 39
+  },
+  {
+    "button": "LeftStickRight",
+    "source_rect": [
+      390,
+      1040,
+      488,
+      1138
+    ],
+    "tile": 40
+  },
+  {
+    "button": "RightStickAllDirections",
+    "source_rect": [
+      130,
+      1170,
+      228,
+      1268
+    ],
+    "tile": 41
+  },
+  {
+    "button": "RightStickLeftRight",
+    "source_rect": [
+      260,
+      1170,
+      358,
+      1268
+    ],
+    "tile": 42
+  },
+  {
+    "button": "RightStickUpDown",
+    "source_rect": [
+      390,
+      1170,
+      488,
+      1268
+    ],
+    "tile": 43
+  },
+  {
+    "button": "RightStickUp",
+    "source_rect": [
+      0,
+      1300,
+      98,
+      1398
+    ],
+    "tile": 44
+  },
+  {
+    "button": "RightStickDown",
+    "source_rect": [
+      130,
+      1300,
+      228,
+      1398
+    ],
+    "tile": 45
+  },
+  {
+    "button": "RightStickLeft",
+    "source_rect": [
+      260,
+      1300,
+      358,
+      1398
+    ],
+    "tile": 46
+  },
+  {
+    "button": "RightStickRight",
+    "source_rect": [
+      390,
+      1300,
+      488,
+      1398
+    ],
+    "tile": 47
+  },
+  {
+    "button": "DpadNeutral",
+    "source_rect": [
+      0,
+      1560,
+      98,
+      1658
+    ],
+    "tile": 48
+  },
+  {
+    "button": "Touchpad",
+    "source_rect": [
+      390,
+      1560,
+      488,
+      1658
+    ],
+    "tile": 49
+  },
+  {
+    "button": "LeftStickClickDiagram",
+    "source_rect": [
+      0,
+      1690,
+      98,
+      1788
+    ],
+    "tile": 50
+  },
+  {
+    "button": "RightStickClickDiagram",
+    "source_rect": [
+      130,
+      1690,
+      228,
+      1788
+    ],
+    "tile": 51
+  },
+  {
+    "button": "LeftStickClickDiagramAlt",
+    "source_rect": [
+      260,
+      1690,
+      358,
+      1788
+    ],
+    "tile": 52
+  },
+  {
+    "button": "RightStickClickDiagramAlt",
+    "source_rect": [
+      390,
+      1690,
+      488,
+      1788
+    ],
+    "tile": 53
+  },
+  {
+    "button": "LeftStickDiagram",
+    "source_rect": [
+      0,
+      1820,
+      98,
+      1918
+    ],
+    "tile": 54
+  },
+  {
+    "button": "RightStickDiagram",
+    "source_rect": [
+      130,
+      1820,
+      228,
+      1918
+    ],
+    "tile": 55
+  },
+  {
+    "button": "LeftStickDiagramAlt",
+    "source_rect": [
+      260,
+      1820,
+      358,
+      1918
+    ],
+    "tile": 56
+  },
+  {
+    "button": "RightStickDiagramAlt",
+    "source_rect": [
+      390,
+      1820,
+      488,
+      1918
+    ],
+    "tile": 57
+  }
+]

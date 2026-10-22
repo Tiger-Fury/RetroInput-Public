@@ -1,0 +1,5 @@
+// Shared image resources. Editing the PNG is enough; rebuild to embed new pixels.
+201 RCDATA "../assets/buttons/dualsense/atlas.png"
+202 RCDATA "../assets/buttons/xbox-series/atlas.png"
+203 RCDATA "../assets/buttons/dualshock4/atlas.png"
+204 RCDATA "../assets/buttons/nintendo/atlas.png"

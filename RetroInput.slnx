@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RetroInput/SufferingXInput.vcxproj" Id="b4e4415e-3c61-46dc-9698-7d356d7aa30d" />
+  <Project Path="RetroInput/SufferingTTBInput.vcxproj" Id="e1a22095-9ca2-4c8e-a648-5808505a7e5c" />
+</Solution>
