@@ -11,6 +11,7 @@ static bool missingImage=false;
 static const std::uint32_t pixel=0;
 static const RetroInput::Buttons::AtlasImage atlas{&pixel,1024,1024,4096,RetroInput::Buttons::PixelFormat::StraightAlphaARGB32};
 namespace RetroInput::Buttons {
+AtlasSize GetButtonAtlasSize() { return {1024,1024}; }
 ButtonImage GetButtonImage(Controller controller,Button button) {
     requestedController=controller;requestedButton=button;
     return missingImage?ButtonImage{}:ButtonImage{&atlas,128,256,128,128};
@@ -63,7 +64,7 @@ int main() {
     assert(glyph!=&normal && glyph->width==15 && glyph->character==character && glyph->source>=Render::MarkerBase);
     assert(normal.width==10 && normal.source==7 && normal.left==2);
     Render::originalDraw=reinterpret_cast<Render::Draw>(&FakeDraw);
-    Render::atlasTextures[0]={&atlas,reinterpret_cast<void*>(222),false};
+    Render::atlasTexture={&atlas,reinterpret_cast<void*>(222),{1024,1024},false};
     InterlockedExchange(&Render::inlineReady,1);
     const std::uint32_t colours[]={0x11223344u,0x22334455u,0x33445566u,0x44556677u};
     for(int device:{1,2,3,4,5,6,7}) {

@@ -188,6 +188,7 @@
     <ClInclude Include="Core\ControllerActivity.h" />
     <ClInclude Include="ControllerSelector.h" />
     <ClInclude Include="Core\ButtonImages.h" />
+    <ClInclude Include="Core\AtlasUpload.h" />
     <ClInclude Include="Core\XInputAggregator.h" />
     <ClInclude Include="Core\XboxSeriesImageMap.h" />
     <ClInclude Include="Core\NintendoImageMap.h" />

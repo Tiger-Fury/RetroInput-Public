@@ -12,7 +12,8 @@ the shared state format even for controllers read through native HID.
 | `Core/XInputAggregator.h` | Four-slot Xbox/XInput aggregation (Xbox Controller Assist)|
 | `DualSense`, `DualShock4`, `Shield`, `Backbone`, `Vx2`, `JoyCon` readers | HID discovery, decoding and reconnects |
 | `Core/*Report.h` | Device-specific report/descriptor decoding |
-| `Core/ButtonImages.*` | Logical button requests, pack selection and CPU pixels |
+| `Core/ButtonImages.*` | Logical button requests, pack selection, CPU pixels and maximum atlas size |
+| `Core/AtlasUpload.h` | Validated uploads into a reusable canvas, including pack-size and row-order differences |
 | `Controller.cpp` | Pass selected input to the game-specific code |
 | `Games/<game>/GameHooks.cpp` | x86 input hook |
 | `Games/<game>/InputMapping.h` | Game keyboard/mouse bindings |
@@ -24,6 +25,14 @@ the shared state format even for controllers read through native HID.
 Fixed addresses, engine/GPU objects, font metrics, bindings and display sizing
 stay in the game-specific code. Shared artwork is requested by logical control through
 `GetButtonImage(controller, button)`; the code for each game owns its GPU resources.
+
+New game renderers should use one reusable native texture for controller artwork.
+Initialize all CPU packs before installing rendering hooks, then size the texture with
+`GetButtonAtlasSize()`. Upload only when the selected pack changes; do not allocate
+an independent native texture for each controller family. `CopyAtlasPixels()` clears
+unused canvas pixels and preserves source coordinates for smaller packs and either
+row order. Keep native texture creation, locking and drawing in each game's code.
+The Suffering and Ties That Bind both use this path.
 
 HID reads use advertised buffer sizes and cancel/drain pending I/O before closing
 handles. The Joy-Con reader sends temporary report-mode commands and reads stored
@@ -37,4 +46,3 @@ and legacy-image packing live in `tools/`; normal Visual Studio builds embed the
 checked-in images directly. Each game has its own project in
 `RetroInput.slnx` and produces a separate DLL. Shared installation and controls
 guides cover the supported games without a separate Markdown page for each game.
-

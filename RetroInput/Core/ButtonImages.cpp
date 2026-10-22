@@ -87,6 +87,16 @@ bool InitializeButtonImages(void* module) {
     return dualSense.available && xboxSeries.available && dualShock4.available && nintendo.available;
 }
 IconPack GetSelectedIconPack() { return selected; }
+AtlasSize GetButtonAtlasSize() {
+    const auto& legacy = GetButtonAtlas();
+    AtlasSize size{legacy.width, legacy.height};
+    for (const auto* pack : {&dualSense, &dualShock4, &nintendo, &xboxSeries}) {
+        if (!pack->available) continue;
+        if (pack->atlas.width > size.width) size.width = pack->atlas.width;
+        if (pack->atlas.height > size.height) size.height = pack->atlas.height;
+    }
+    return size;
+}
 
 ButtonImage GetButtonImage(IconPack pack, Button button) {
     if (static_cast<unsigned>(button) >= static_cast<unsigned>(Button::Count)) return {};

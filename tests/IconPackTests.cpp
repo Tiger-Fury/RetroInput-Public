@@ -13,8 +13,12 @@ int main(int argc, char** argv) {
     const bool missing = argc > 1 && strcmp(argv[1], "missing") == 0;
     assert(InitializeButtonImages(missing ? GetModuleHandleW(L"kernel32.dll") : GetModuleHandleW(nullptr)) == !missing);
     const auto legacy = GetLegacyButtonImage(Controller::Xbox, Button::South).atlas;
+    const auto canvas = GetButtonAtlasSize();
+    assert(canvas.width >= legacy->width && canvas.height >= legacy->height);
+    if (missing) assert(canvas.width == legacy->width && canvas.height == legacy->height);
     for (auto pack : {IconPack::DualSense, IconPack::XboxSeries, IconPack::DualShock4, IconPack::Nintendo}) {
         const auto decoded = GetButtonImage(pack, Button::South).atlas;
+        assert(decoded->width <= canvas.width && decoded->height <= canvas.height);
         if (!missing) {
             std::uint32_t hash = 2166136261u;
             const auto bytes = reinterpret_cast<const unsigned char*>(decoded->pixels);

@@ -37,6 +37,7 @@
     <ClInclude Include="ControllerSelector.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="Games\TheSuffering\InputMapping.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="Core\ButtonImages.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Core\AtlasUpload.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="Core\XInputAggregator.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="Core\XboxSeriesImageMap.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="Core\NintendoImageMap.h"><Filter>Header Files</Filter></ClInclude>

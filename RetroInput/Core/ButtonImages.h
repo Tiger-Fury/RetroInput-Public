@@ -36,6 +36,7 @@ struct AtlasImage {
     int width, height, strideBytes;
     PixelFormat format;
 };
+struct AtlasSize { int width, height; };
 struct ButtonImage {
     const AtlasImage* atlas = nullptr;
     int x = 0, y = 0, width = 0, height = 0;
@@ -72,6 +73,8 @@ inline ButtonImage GetLegacyButtonImage(Controller controller, Button button) {
 // module is the module containing ButtonImages.rc. Failure retains legacy artwork.
 bool InitializeButtonImages(void* module);
 IconPack GetSelectedIconPack();
+// Maximum canvas required by the initialized packs and legacy fallback.
+AtlasSize GetButtonAtlasSize();
 ButtonImage GetButtonImage(IconPack pack, Button button);
 ButtonImage GetButtonImage(Controller controller, Button button);
 } // namespace RetroInput::Buttons

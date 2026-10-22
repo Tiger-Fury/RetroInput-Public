@@ -7,6 +7,7 @@
 #include <atomic>
 #include <cmath>
 #include "../../Core/ButtonImages.h"
+#include "../../Core/AtlasUpload.h"
 #include "../../Core/ControllerTypes.h"
 
 extern std::atomic<int> g_controllerType;
@@ -28,9 +29,10 @@ static Draw originalDraw = nullptr;
 struct AtlasTexture {
     const Buttons::AtlasImage* source = nullptr;
     void* texture = nullptr;
+    Buttons::AtlasSize size = {};
     bool failed = false;
 };
-static AtlasTexture atlasTextures[5]; // Legacy plus the four platform packs, independently owned.
+static AtlasTexture atlasTexture;
 static DWORD renderThread = 0;
 
 inline void Log(const char* message, long value = 0) {
@@ -43,6 +45,7 @@ inline void Log(const char* message, long value = 0) {
     fprintf(file, "%lu %s (%ld)\n", GetTickCount(), message, value);
     fclose(file);
 }
+
 template<class T> inline T Method(void* object, unsigned offset) {
     return reinterpret_cast<T>((*reinterpret_cast<std::uintptr_t**>(object))[offset / 4]);
 }
@@ -53,32 +56,19 @@ inline void ReleaseAtlas(AtlasTexture& atlas) {
     Method<Release>(old, 0x30)(old, 0);
     Log("Released atlas owner reference");
 }
-inline bool CreateAtlas(const Buttons::AtlasImage& image, AtlasTexture& atlas) {
-    // 32-bit, alpha selector 0x80000, drawable flag 1; no render-target flag.
-    atlas.texture = reinterpret_cast<Create>(0x004481C0)(
-        reinterpret_cast<void*>(0x005C8BD0), image.width, image.height,
-        32, 0x00080001, nullptr);
-    if (!atlas.texture) { Log("Engine texture creation failed"); return false; }
+inline bool UploadAtlas(const Buttons::AtlasImage& image, AtlasTexture& atlas) {
     void* gpu = *reinterpret_cast<void**>(static_cast<unsigned char*>(atlas.texture) + 0x64);
-    if (!gpu) { Log("Created resource has no GPU texture"); ReleaseAtlas(atlas); return false; }
+    if (!gpu) { Log("Created resource has no GPU texture"); return false; }
     LockedRect rect = {};
-    // Verified engine interface offsets (do not substitute IDirect3DTexture9 layout).
+    // Verified texture interface offsets for this executable.
     const HRESULT locked = Method<Lock>(gpu, 0x4C)(gpu, 0, &rect, nullptr, 0);
-    if (FAILED(locked)) { Log("Texture lock failed", locked); ReleaseAtlas(atlas); return false; }
-    const bool valid = rect.pixels && rect.pitch >= image.strideBytes;
-    if (valid) {
-        for (int y = 0; y < image.height; ++y) {
-            void* row = static_cast<unsigned char*>(rect.pixels) + y * rect.pitch;
-            // This engine draw path presents uploaded rows bottom-to-top.
-            // Keep the shared artwork top-to-bottom; adapt only at upload.
-            const int sourceY = image.height - 1 - y;
-            memcpy(row, image.pixels + sourceY * image.width, image.strideBytes);
-        }
-    }
+    if (FAILED(locked)) { Log("Texture lock failed", locked); return false; }
+    const bool valid = Buttons::CopyAtlasPixels(image, rect.pixels, rect.pitch,
+        atlas.size, Buttons::AtlasRowOrder::BottomToTop);
     const HRESULT unlocked = Method<Unlock>(gpu, 0x50)(gpu, 0);
     if (!valid || FAILED(unlocked)) {
-        Log("Invalid pitch/pixels or unlock failure", rect.pitch);
-        ReleaseAtlas(atlas); return false;
+        Log("Invalid upload geometry or unlock failure", rect.pitch);
+        return false;
     }
     Log("Uploaded controller image pack; width", image.width);
     Log("Controller image pack height", image.height);
@@ -86,16 +76,33 @@ inline bool CreateAtlas(const Buttons::AtlasImage& image, AtlasTexture& atlas) {
     return true;
 }
 inline void* GetNativeAtlas(const Buttons::AtlasImage& image) {
-    for (auto& atlas : atlasTextures) {
-        if (atlas.source && atlas.source != &image) continue;
-        atlas.source = &image;
-        if (!atlas.texture && !atlas.failed && !CreateAtlas(image, atlas)) {
+    auto& atlas = atlasTexture;
+    if (atlas.failed) return nullptr;
+    if (!atlas.texture) {
+        // Size once for every loaded pack, including a differently sized fallback.
+        atlas.size = Buttons::GetButtonAtlasSize();
+        atlas.texture = reinterpret_cast<Create>(0x004481C0)(
+            reinterpret_cast<void*>(0x005C8BD0), atlas.size.width, atlas.size.height,
+            32, 0x00080001, nullptr);
+        if (!atlas.texture) {
             atlas.failed = true;
-            Log("Inline atlas creation failed; using X fallback");
+            Log("Controller texture creation failed; using X fallback");
+            return nullptr;
         }
-        return atlas.texture;
+        Log("Created reusable controller texture");
     }
-    return nullptr;
+    if (atlas.source != &image) {
+        if (!UploadAtlas(image, atlas)) {
+            atlas.failed = true;
+            // A texture used by earlier draws can still be bound by the engine.
+            // Keep its owner reference until process exit; never draw stale artwork.
+            if (!atlas.source) ReleaseAtlas(atlas);
+            Log("Controller texture upload failed; using X fallback");
+            return nullptr;
+        }
+        atlas.source = &image;
+    }
+    return atlas.texture;
 }
 
 // Private-use character order belongs to this game's prompt transport only.
@@ -315,4 +322,3 @@ inline bool InlineEnabled() { return false; }
 inline bool Install() { return false; }
 #endif
 } // namespace RetroInput::TheSuffering::ButtonRenderer
-

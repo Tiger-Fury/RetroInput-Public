@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
-#include "../../Core/ButtonImages.h"
+#include "../../Core/AtlasUpload.h"
 
 namespace RetroInput::TheSufferingTTB::RenderingSupport {
 struct LockedRect { int pitch; void* pixels; };
@@ -39,20 +39,11 @@ inline void Log(const char* message, long value = 0)
 
 // Validate geometry before touching GPU memory. Shared pixels stay top-to-bottom;
 // TTB's screen-rectangle path requires reversed rows at upload.
-inline bool CopyPixels(const Buttons::AtlasImage& source, const LockedRect& destination)
+inline bool CopyPixels(const Buttons::AtlasImage& source, const LockedRect& destination,
+    Buttons::AtlasSize canvas)
 {
-    if (!source.pixels || source.width <= 0 || source.height <= 0 ||
-        source.width > 4096 || source.height > 4096 ||
-        source.format != Buttons::PixelFormat::StraightAlphaARGB32 ||
-        source.strideBytes != source.width * 4 || !destination.pixels ||
-        destination.pitch < source.strideBytes) return false;
-    for (int y = 0; y < source.height; ++y) {
-        auto row = static_cast<unsigned char*>(destination.pixels) +
-            static_cast<std::size_t>(y) * destination.pitch;
-        std::memcpy(row, source.pixels + (source.height - 1 - y) * source.width,
-            source.strideBytes);
-    }
-    return true;
+    return Buttons::CopyAtlasPixels(source, destination.pixels, destination.pitch,
+        canvas, Buttons::AtlasRowOrder::BottomToTop);
 }
 
 } // namespace RetroInput::TheSufferingTTB::RenderingSupport
