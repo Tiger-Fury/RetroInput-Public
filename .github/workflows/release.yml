@@ -41,8 +41,13 @@ jobs:
           $PSNativeCommandUseErrorActionPreference = $false
           gh release view $env:RELEASE_VERSION --repo $env:GITHUB_REPOSITORY *> $null
           if ($LASTEXITCODE -eq 0) { throw 'This release already exists; existing downloads will not be overwritten.' }
-          $files = @(Get-ChildItem "build/release/$env:RELEASE_VERSION" -File | Where-Object { $_.Extension -eq '.zip' -or $_.Name -eq 'SHA256SUMS.txt' } | ForEach-Object FullName)
-          if ($files.Count -ne 3) { throw 'Expected two game ZIPs and one checksum file.' }
+          $directory = "build/release/$env:RELEASE_VERSION"
+          $files = @(
+            (Join-Path $directory "RetroInput-The-Suffering-$env:RELEASE_VERSION-Win32.zip"),
+            (Join-Path $directory "RetroInput-The-Suffering-Ties-That-Bind-$env:RELEASE_VERSION-Win32.zip"),
+            (Join-Path $directory 'SHA256SUMS.txt')
+          )
+          foreach ($file in $files) { if (!(Test-Path -LiteralPath $file -PathType Leaf)) { throw "Missing release file: $file" } }
           gh release create $env:RELEASE_VERSION @files --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --draft --title "RetroInput $env:RELEASE_VERSION - Controller artwork switching fix" --notes-file tools/RELEASE_NOTES.md
           if ($LASTEXITCODE -ne 0) { throw 'Release creation or upload failed.' }
           gh release edit $env:RELEASE_VERSION --repo $env:GITHUB_REPOSITORY --draft=false --latest
