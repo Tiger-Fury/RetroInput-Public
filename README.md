@@ -1,5 +1,9 @@
 # RetroInput
 
+<p align="center">
+  <img src="assets/branding/retroinput-logo.png" alt="RetroInput — classic games, modern control" width="720">
+</p>
+
 A controller-support framework for older PC games, providing native controller input, automatic controller detection and console-style button images.
 
 Controller readers, device selection and artwork are shared across supported games. Each game has its own bindings and hooks, built into a separate DLL. Available features depend on the game.
