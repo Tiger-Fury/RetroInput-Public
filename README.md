@@ -1,7 +1,7 @@
 # RetroInput
 
 <p align="center">
-  <img src="assets/branding/retroinput-logo.png" alt="RetroInput — classic games, modern control" width="720">
+  <img src="assets/branding/retroinput-logo-1920x1080.png" alt="RetroInput — classic games, modern control" width="720">
 </p>
 
 A controller-support framework for older PC games, providing native controller input, automatic controller detection and console-style button images.
